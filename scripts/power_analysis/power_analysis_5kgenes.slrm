@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#SBATCH -J tomato_power_analysis_1
+#SBATCH -p general
+#SBATCH -o /N/slate/mhibbins/outputs/%j.txt
+#SBATCH -e /N/slate/mhibbins/outputs/%j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=mhibbins@iu.edu
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=01:00:00
+#SBATCH --mem=16G
+
+#Example SLURM script used to carry out our power analysis with ngenes = 15,000. This script was 
+#run 100 times in parallel for each of 5k, 10k, and 15k genes. 
+
+module load r/3.6.0
+cd /N/slate/mhibbins/intro_gene_expression/
+Rscript tomato_power_analysis/tomato_power_analysis.R >> tomato_power_analysis/tomato_power_analysis_15kgenes_results.txt
