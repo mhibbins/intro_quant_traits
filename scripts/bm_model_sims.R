@@ -115,6 +115,7 @@ plot_BM <- function(t1, t2, tm, delta2, delta3, sigma2, n_traits) {
 
    dists_df <- data.frame(cbind(AB_dist, BC_dist, AC_dist))
    colnames(dists_df) <- c("q1q2", "q2q3", "q1q3")
+   write.csv(dists_df, "fig2_intro_sims.csv")
    long_dists <- gather(dists_df, pair, value)
 
    dists_plot <- ggplot(long_dists, aes(x = pair, y = value, group = 1))

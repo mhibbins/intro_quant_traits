@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#SBATCH -J tomato_power_analysis_nointro_1
+#SBATCH -p general
+#SBATCH -o /N/slate/mhibbins/outputs/%j.txt
+#SBATCH -e /N/slate/mhibbins/outputs/%j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=mhibbins@iu.edu
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=01:00:00
+#SBATCH --mem=16G
+
+module load r/3.6.0
+cd /N/slate/mhibbins/intro_gene_expression/
+Rscript tomato_power_analysis/tomato_power_analysis_nointro.R >> tomato_power_analysis/tomato_power_analysis_nointro_results.txt
